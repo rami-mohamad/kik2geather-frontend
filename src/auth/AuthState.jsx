@@ -98,6 +98,17 @@ const AuthState = ({ children }) => {
     }
   }, []);
 
+  const checkAuthOnLoad = useCallback(async () => {
+    try {
+      const { data } = await api.get("/user/me", { withCredentials: true });
+      dispatch({ type: AUTH_USER_LOADED, payload: data });
+    } catch (error) {
+      console.log(error);
+
+      dispatch({ type: AUTH_USER_LOADED_ERROR });
+    }
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -112,6 +123,7 @@ const AuthState = ({ children }) => {
         loadUser,
         logout,
         clearError,
+        checkAuthOnLoad,
       }}
     >
       {children}

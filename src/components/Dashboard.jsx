@@ -20,6 +20,9 @@ export default function Dashboard() {
     setLoading(true);
     try {
       const res = await loadUser();
+      if (!res) {
+        throw new Error("Failed to load user data");
+      }
 
       setData(res || { user: { name: "" }, bookings: [] });
     } catch (err) {
@@ -29,7 +32,7 @@ export default function Dashboard() {
     } finally {
       setLoading(false);
     }
-  }, [loadUser, addAlert]);
+  }, [loadUser, addAlert, navigate]);
 
   useEffect(() => {
     loadData();

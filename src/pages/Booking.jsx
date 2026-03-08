@@ -43,7 +43,6 @@ export default function Booking() {
 
   // keep booking object (better than boolean)
   const [booking, setBooking] = useState(null);
-  console.log("booking", booking);
 
   // email should be string or null
   const [email, setEmail] = useState(null);
