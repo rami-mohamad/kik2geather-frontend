@@ -13,7 +13,6 @@ import Booking from "./pages/Booking";
 
 import BookingConfirmation from "./components/BookingConfirmation";
 import Dashboard from "./components/Dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
@@ -25,23 +24,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/registration" element={<Registration />} />
-          <Route
-            path="/booking"
-            element={
-              <ProtectedRoute>
-                <Booking />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/booking" element={<Booking />} />
           <Route path="/booking/confirm" element={<BookingConfirmation />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/dashboard" element={<Dashboard />} />
 
           {/* fallback */}
           <Route path="*" element={<Navigate to="/" replace />} />

@@ -4,12 +4,14 @@ import AuthContext from "../auth/authContext";
 import AlertContext from "../alert/alertContext";
 import Alerts from "../components/Alerts";
 import Navbar from "../components/NavbarHistory";
+import { useNavigate } from "react-router-dom";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:4000";
 
 export default function Dashboard() {
   const { loadUser } = useContext(AuthContext);
   const { addAlert } = useContext(AlertContext);
+  const navigate = useNavigate();
 
   const [data, setData] = useState({ user: { name: "" }, bookings: [] });
   const [loading, setLoading] = useState(true);
@@ -22,7 +24,7 @@ export default function Dashboard() {
       setData(res || { user: { name: "" }, bookings: [] });
     } catch (err) {
       console.log(err);
-
+      navigate("/", { replace: true });
       addAlert("Failed to load dashboard data", "danger");
     } finally {
       setLoading(false);
