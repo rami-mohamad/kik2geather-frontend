@@ -250,21 +250,22 @@ export default function Payment({ booking, setEmail }) {
                   onClick={finishBook}
                   disabled={isSubmitting}
                   className={[
-                    "relative h-14 w-56 rounded-full px-6 text-base font-bold text-black shadow-md transition",
+                    "relative flex h-14 w-56 items-center justify-center rounded-full px-6 text-base font-bold text-black shadow-md transition",
                     "bg-[linear-gradient(180deg,#eac66f_0%,rgba(255,255,255,0)_100%),linear-gradient(180deg,#858585_0%,#ffeaa7_100%)]",
                     isSubmitting
-                      ? "opacity-60 cursor-not-allowed"
-                      : "hover:scale-[1.01]",
+                      ? "opacity-70 cursor-not-allowed"
+                      : "hover:scale-[1.02]",
                   ].join(" ")}
                 >
-                  <span
-                    className={[
-                      "inline-block transition-transform duration-700",
-                      isSubmitting ? "translate-x-[90px]" : "translate-x-0",
-                    ].join(" ")}
-                  >
-                    {isSubmitting ? "processing..." : "confirm payment"}
+                  <span className={isSubmitting ? "opacity-0" : "opacity-100"}>
+                    Confirm Payment
                   </span>
+
+                  {isSubmitting && (
+                    <div className="absolute flex items-center justify-center">
+                      <div className="h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent"></div>
+                    </div>
+                  )}
                 </button>
 
                 <div className="flex h-14 w-36 items-center justify-center rounded-full bg-white text-xl font-extrabold text-black shadow">
