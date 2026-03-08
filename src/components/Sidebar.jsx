@@ -13,7 +13,7 @@ const Sidebar = ({ isOpen, toggle }) => {
   return (
     <div
       className={[
-        "fixed inset-0 z-50 transition-all duration-300",
+        "fixed inset-0 z-60 transition-all duration-300",
         isOpen ? "opacity-100 visible" : "opacity-0 invisible",
       ].join(" ")}
       onClick={toggle}

@@ -54,7 +54,7 @@ export default function NavbarHistory() {
 
               {/* Book a Play */}
               <Link to="/booking" className={buttonStyle}>
-                Book a Play
+                Book
               </Link>
 
               {/* Logout */}
