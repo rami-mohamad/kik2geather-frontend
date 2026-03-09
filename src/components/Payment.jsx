@@ -55,30 +55,36 @@ export default function Payment({ booking, setEmail }) {
     setIsSubmitting(true);
 
     try {
-      const res = await api.post(`/booking/book`, booking);
+      const res = await api.post("/booking/book", booking);
 
       if (res?.data?.needsAuth || res?.data?.status === "NEEDS_AUTH") {
         navigate("/registration");
         return;
       }
 
-      const success =
-        res?.data?.success === true ||
-        res?.status === 200 ||
-        res?.status === 201;
+      const success = res?.data?.success === true;
 
       if (!success) {
         throw new Error(res?.data?.message || "Booking failed");
       }
 
-      const email = res?.data?.email;
-      if (email) setEmail(email);
+      if (res?.data?.email) setEmail(res.data.email);
+
+      if (res?.data?.emailSent === false) {
+        setErrorMsg(
+          "Booking succeeded, but confirmation email could not be sent.",
+        );
+      } else {
+        setErrorMsg("");
+      }
+
       navigate("/dashboard");
     } catch (err) {
       const msg =
         err?.response?.data?.message ||
         err?.message ||
         "Something went wrong. Please try again.";
+
       setErrorMsg(msg);
 
       if (err?.response?.status === 401) {
