@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useContext, useCallback } from "react";
-import axios from "axios";
+
 import AuthContext from "../auth/authContext";
 import AlertContext from "../alert/alertContext";
 import Alerts from "../components/Alerts";
 import Navbar from "../components/NavbarHistory";
 import { useNavigate } from "react-router-dom";
-
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:4000";
+import { api } from "../lib/api";
 
 export default function Dashboard() {
   const { loadUser } = useContext(AuthContext);
@@ -40,9 +39,7 @@ export default function Dashboard() {
 
   const deleteOrder = async (id) => {
     try {
-      await axios.delete(`${API_BASE}/booking/${id}`, {
-        withCredentials: true,
-      });
+      await api.delete(`/booking/${id}`);
 
       addAlert("Order successfully deleted!", "success");
       await loadData();

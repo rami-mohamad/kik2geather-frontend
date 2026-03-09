@@ -85,8 +85,7 @@ const AuthState = ({ children }) => {
 
   const logout = useCallback(async () => {
     try {
-      const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:4000";
-      await api.post(`${baseUrl}/user/logout`, {}, { withCredentials: true });
+      await api.post(`/user/logout`);
       dispatch({ type: AUTH_LOGOUT });
     } catch (error) {
       console.log("logout error:", error);
@@ -95,7 +94,7 @@ const AuthState = ({ children }) => {
 
   const checkAuthOnLoad = useCallback(async () => {
     try {
-      const { data } = await api.get("/user/me", { withCredentials: true });
+      const { data } = await api.get("/user/me");
       dispatch({ type: AUTH_USER_LOADED, payload: data });
     } catch (error) {
       console.log(error);

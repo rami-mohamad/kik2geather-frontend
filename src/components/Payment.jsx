@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import Bg from "../assets/Media/Images/Payment/PaymentBg.png";
 import Step3Img from "../assets/Media/Images/Payment/step 3.png";
@@ -13,8 +12,7 @@ import GooglePayImg from "../assets/Media/Images/Payment/googlepay 1.png";
 import VisaImg from "../assets/Media/Images/Payment/visa-electron 1.png";
 import MastercardImg from "../assets/Media/Images/Payment/mastercard 1.png";
 import PaydirektImg from "../assets/Media/Images/Payment/paydirekt 1.png";
-
-const API_BASE = import.meta.env?.VITE_API_BASE_URL || "http://localhost:4000";
+import { api } from "../lib/api";
 
 export default function Payment({ booking, setEmail }) {
   const [method, setMethod] = useState("Paypal");
@@ -57,12 +55,7 @@ export default function Payment({ booking, setEmail }) {
     setIsSubmitting(true);
 
     try {
-      const res = await axios.post(`${API_BASE}/booking/book`, booking, {
-        withCredentials: true,
-        headers: { "Content-Type": "application/json" },
-      });
-
-      console.log("res", res);
+      const res = await api.post(`/booking/book`, booking);
 
       const ok = Boolean(res?.data?.status ?? res?.data?.success ?? true);
 
