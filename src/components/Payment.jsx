@@ -56,6 +56,7 @@ export default function Payment({ booking, setEmail }) {
 
     try {
       const res = await api.post("/booking/book", booking);
+      console.log(res);
 
       if (res?.data?.needsAuth || res?.data?.status === "NEEDS_AUTH") {
         navigate("/registration");
@@ -69,14 +70,6 @@ export default function Payment({ booking, setEmail }) {
       }
 
       if (res?.data?.email) setEmail(res.data.email);
-
-      if (res?.data?.emailSent === false) {
-        setErrorMsg(
-          "Booking succeeded, but confirmation email could not be sent.",
-        );
-      } else {
-        setErrorMsg("");
-      }
 
       navigate("/dashboard");
     } catch (err) {
