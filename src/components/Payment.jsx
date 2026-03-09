@@ -57,19 +57,23 @@ export default function Payment({ booking, setEmail }) {
     try {
       const res = await api.post(`/booking/book`, booking);
 
-      const ok = Boolean(res?.data?.status ?? res?.data?.success ?? true);
-
       if (res?.data?.needsAuth || res?.data?.status === "NEEDS_AUTH") {
         navigate("/registration");
         return;
       }
 
-      if (!ok) {
+      const success =
+        res?.data?.success === true ||
+        res?.status === 200 ||
+        res?.status === 201;
+
+      if (!success) {
         throw new Error(res?.data?.message || "Booking failed");
       }
 
       const email = res?.data?.email;
       if (email) setEmail(email);
+      navigate("/dashboard");
     } catch (err) {
       const msg =
         err?.response?.data?.message ||
@@ -77,7 +81,9 @@ export default function Payment({ booking, setEmail }) {
         "Something went wrong. Please try again.";
       setErrorMsg(msg);
 
-      navigate("/registration");
+      if (err?.response?.status === 401) {
+        navigate("/registration");
+      }
     } finally {
       setIsSubmitting(false);
     }
