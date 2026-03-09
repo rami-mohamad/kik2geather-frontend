@@ -1,4 +1,3 @@
-import React from "react";
 import { HiOutlineHome } from "react-icons/hi";
 import { IoIosPricetags } from "react-icons/io";
 import { TiInfoLargeOutline } from "react-icons/ti";
@@ -19,10 +18,8 @@ const Sidebar = ({ isOpen, toggle }) => {
       onClick={toggle}
       aria-hidden={!isOpen}
     >
-      {/* overlay */}
       <div className="absolute inset-0 bg-black/70" />
 
-      {/* panel */}
       <aside
         className={[
           "absolute right-0 top-0 h-full w-full max-w-[420px]",
@@ -31,9 +28,8 @@ const Sidebar = ({ isOpen, toggle }) => {
           "transition-transform duration-300",
           isOpen ? "translate-x-0" : "translate-x-full",
         ].join(" ")}
-        onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* close */}
         <div className="flex items-center justify-end p-6">
           <button
             type="button"
@@ -45,9 +41,7 @@ const Sidebar = ({ isOpen, toggle }) => {
           </button>
         </div>
 
-        {/* content */}
         <div className="flex h-[calc(100%-72px)] flex-col justify-between px-6 pb-8">
-          {/* menu */}
           <nav className="mt-2">
             <ul className="flex flex-col gap-3">
               <li>
@@ -97,7 +91,6 @@ const Sidebar = ({ isOpen, toggle }) => {
             </ul>
           </nav>
 
-          {/* button */}
           <div className="pt-6">
             <LinkRouter
               to="/registration"

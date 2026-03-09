@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "../assets/priceImages/Icon.png";
 import Background from "../assets/priceImages/Gradient.png";
@@ -34,12 +33,10 @@ export default function Price() {
         max-[480px]:h-[1620px]
       "
       style={{
-        // only on small screens (like your old CSS)
         backgroundImage:
           "linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(194,194,194,0.239583)_10.42%,rgba(137,137,137,0.463542)_46.35%,rgba(137,137,137,0.463542)_87.5%,#000_100%),linear-gradient(180deg,#000_0%,#fff_100%),linear-gradient(180deg,#fff_0%,rgba(255,255,255,0)_100%),linear-gradient(180deg,#2d3436_0%,rgba(45,52,54,0)_100%)",
       }}
     >
-      {/* mobile background image like your old css (only under 768) */}
       <div
         className="pointer-events-none absolute inset-0 hidden max-md:block"
         style={{
@@ -50,7 +47,6 @@ export default function Price() {
         }}
       />
 
-      {/* header */}
       <div className="relative z-10 mx-auto flex w-full max-w-[1000px] flex-col items-start px-5 py-5 font-bold">
         <h2 className="mb-[26px] flex justify-start font-['Michroma',sans-serif] text-[16px] font-bold uppercase tracking-[1.4px] text-[#fabf2f]">
           Price
@@ -66,7 +62,6 @@ export default function Price() {
         </p>
       </div>
 
-      {/* cards */}
       <div
         className="
           relative z-10 mx-auto grid w-full max-w-[1000px] place-items-center gap-4
@@ -76,7 +71,6 @@ export default function Price() {
           max-md:px-5
         "
       >
-        {/* Card 1 */}
         <div
           className="
   group flex h-[350px] w-[300px] flex-col justify-between
@@ -116,7 +110,6 @@ export default function Price() {
           </div>
         </div>
 
-        {/* Card 2 */}
         <div
           className="
   group flex h-[350px] w-[300px] flex-col justify-between

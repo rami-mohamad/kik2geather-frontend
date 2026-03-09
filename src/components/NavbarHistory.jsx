@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import Logo from "../assets/logo/NavbarLogo.svg"; // adjust path if needed
+import Logo from "../assets/logo/NavbarLogo.svg";
 import AuthContext from "../auth/authContext";
 import { MdLogout } from "react-icons/md";
 
@@ -29,7 +29,6 @@ export default function NavbarHistory() {
   return (
     <nav className="sticky top-0 z-10 flex h-20 items-center justify-center bg-gradient-to-b from-black via-[#424242] to-black">
       <div className="flex h-[50px] w-full max-w-[1100px] items-center justify-between px-6">
-        {/* Logo -> go home */}
         <button
           type="button"
           onClick={() => navigate("/")}
@@ -39,7 +38,6 @@ export default function NavbarHistory() {
           <img src={Logo} alt="Logo" className="w-[140px]" />
         </button>
 
-        {/* Sign In | Up button */}
         <div className="flex items-center gap-3">
           {!isAuthenticated ? (
             <Link to="/registration" className={buttonStyle}>
@@ -47,17 +45,14 @@ export default function NavbarHistory() {
             </Link>
           ) : (
             <>
-              {/* Home */}
               <Link to="/" className={buttonStyle}>
                 Home
               </Link>
 
-              {/* Book a Play */}
               <Link to="/booking" className={buttonStyle}>
                 Book
               </Link>
 
-              {/* Logout */}
               <button onClick={handleLogout} className={buttonStyle}>
                 <MdLogout className="mr-1" />
                 Logout

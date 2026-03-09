@@ -3,8 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../auth/authContext";
 import AlertContext from "../alert/alertContext";
 
-// Optional: use your old background image
-import CardBg from "../assets/Section 2.png"; // adjust path
+import CardBg from "../assets/Section 2.png";
 
 function SignIn() {
   const navigate = useNavigate();
@@ -21,7 +20,6 @@ function SignIn() {
       addAlert(error, "error");
       clearError();
     }
-    // if (isAuthenticated) navigate("/dashboard");
   }, [error, isAuthenticated, addAlert, clearError, navigate]);
 
   const onChange = (e) =>
@@ -45,7 +43,6 @@ function SignIn() {
           border border-white/10 bg-white/5 shadow-xl backdrop-blur
         "
       >
-        {/* Background image layer (like your old design) */}
         <div
           className="absolute inset-0 opacity-25"
           style={{
@@ -56,10 +53,8 @@ function SignIn() {
           }}
         />
 
-        {/* Gradient overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
 
-        {/* Content */}
         <div className="relative p-6 sm:p-8">
           <div className="mb-6">
             <h2 className="text-2xl font-semibold text-white">Sign in</h2>
@@ -134,7 +129,6 @@ function SignIn() {
             </div>
           </form>
 
-          {/* Optional footer line */}
           <p className="mt-6 text-xs text-white/50">
             By continuing you agree to our Terms & Privacy Policy.
           </p>

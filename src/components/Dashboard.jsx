@@ -58,7 +58,6 @@ export default function Dashboard() {
       <Navbar />
 
       <div className="min-h-screen bg-gradient-to-b from-black via-gray-700 to-gray-800 text-white px-4 pb-16">
-        {/* Welcome */}
         <h1 className="text-center pt-12 text-4xl md:text-5xl font-bold text-yellow-500 underline">
           Welcome {data?.user?.name || "User"}
         </h1>
@@ -67,7 +66,6 @@ export default function Dashboard() {
           <Alerts />
         </div>
 
-        {/* Loading */}
         {loading ? (
           <div className="flex justify-center mt-20">
             <div className="h-12 w-12 border-4 border-yellow-500 border-t-transparent rounded-full animate-spin"></div>
@@ -109,7 +107,6 @@ export default function Dashboard() {
                   <InfoLine label="Towels" value={book.towels || 0} />
                 </div>
 
-                {/* Delete Button */}
                 <button
                   onClick={() => deleteOrder(book._id)}
                   className="absolute bottom-4 left-1/2 -translate-x-1/2 w-3/4 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-full transition"

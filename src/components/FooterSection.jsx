@@ -48,11 +48,9 @@ export default function Footer() {
     try {
       const baseURL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
-      const { data } = await axios.post(`${baseURL}/user/contact`, contact, {
+      await axios.post(`${baseURL}/user/contact`, contact, {
         headers: { "Content-Type": "application/json" },
       });
-
-      console.log("Contact sent:", data);
 
       setStatus({
         type: "success",
@@ -116,7 +114,6 @@ export default function Footer() {
               md:p-8 lg:grid-cols-2 lg:p-10
             "
           >
-            {/* LEFT */}
             <div className="flex flex-col justify-between gap-10">
               <div>
                 <p className={sectionLabel}>Follow us</p>
@@ -168,7 +165,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* RIGHT */}
             <div className="rounded-2xl border border-white/10 bg-black/20 p-5 md:p-6">
               <div className="mb-6">
                 <p className={sectionLabel}>Subscribe us</p>

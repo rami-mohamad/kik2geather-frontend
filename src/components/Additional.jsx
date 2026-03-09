@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react";
 
-import Bg from "../assets/Media/Images/Additional/AdditionalBg.png"; // adjust
-import ItemsImg from "../assets/Media/Images/Additional/items.png"; // adjust
-import Step2Img from "../assets/Media/Images/Additional/step 2.png"; // adjust
+import Bg from "../assets/Media/Images/Additional/AdditionalBg.png";
+import ItemsImg from "../assets/Media/Images/Additional/items.png";
+import Step2Img from "../assets/Media/Images/Additional/step 2.png";
 
 function pad2(n) {
   return String(n).padStart(2, "0");
@@ -17,14 +17,12 @@ function repeatValue(qty, value) {
 export default function Additional({ booking, setBooking, setShowPayment }) {
   console.log(booking);
 
-  // normalize booking numbers
   const users = Number(booking?.users ?? 1);
   const field = Number(booking?.field ?? 1);
   const startHour = Number(booking?.startHour ?? 14);
   const hoursQuantity = Number(booking?.hoursQuantity ?? 1);
   const date = booking?.date ?? "";
 
-  // state
   const [shoesQty, setShoesQty] = useState(0);
   const [shirtsQty, setShirtsQty] = useState(0);
   const [towelsQty, setTowelsQty] = useState(0);
@@ -36,12 +34,10 @@ export default function Additional({ booking, setBooking, setShowPayment }) {
   const shirtSizes = ["S", "M", "L", "XL", "XXL"];
 
   const baseTotal = useMemo(() => {
-    // your rule: 5€ per person per hour
     return users * hoursQuantity * 5;
   }, [users, hoursQuantity]);
 
   const addonsTotal = useMemo(() => {
-    // you used 5€ each item
     return (shoesQty + shirtsQty + towelsQty) * 5;
   }, [shoesQty, shirtsQty, towelsQty]);
 
@@ -83,7 +79,6 @@ export default function Additional({ booking, setBooking, setShowPayment }) {
       style={{ backgroundImage: `url(${Bg})` }}
     >
       <div className="mx-auto w-full max-w-6xl px-4 py-8">
-        {/* progress */}
         <div className="flex justify-center">
           <img
             src={Step2Img}
@@ -92,7 +87,6 @@ export default function Additional({ booking, setBooking, setShowPayment }) {
           />
         </div>
 
-        {/* headings */}
         <div className="mt-10 text-center">
           <h2 className="text-2xl font-semibold tracking-wide text-black md:text-4xl">
             You forgot about your shoes? No problem!
@@ -102,7 +96,6 @@ export default function Additional({ booking, setBooking, setShowPayment }) {
           </p>
         </div>
 
-        {/* summary card */}
         <div className="mt-10 rounded-2xl bg-[#eac66f] p-4 shadow-lg">
           <div className="grid grid-cols-4 gap-2 text-center text-xs font-semibold uppercase text-black md:text-sm">
             <div className="rounded-lg border border-white/60 bg-white/10 py-3">
@@ -133,9 +126,7 @@ export default function Additional({ booking, setBooking, setShowPayment }) {
           </div>
         </div>
 
-        {/* main content */}
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
-          {/* left image */}
           <div className="lg:col-span-4">
             <div
               className="mx-auto aspect-[309/500] w-full max-w-[340px] bg-contain bg-center bg-no-repeat"
@@ -143,7 +134,6 @@ export default function Additional({ booking, setBooking, setShowPayment }) {
             />
           </div>
 
-          {/* addons table */}
           <div className="lg:col-span-4">
             <div className="rounded-2xl bg-[#eac66f] p-4 shadow-lg">
               <div className="grid grid-cols-3 text-center text-sm font-semibold uppercase">
@@ -158,7 +148,6 @@ export default function Additional({ booking, setBooking, setShowPayment }) {
                 </div>
               </div>
 
-              {/* row component */}
               <AddonRow
                 label="Shoes"
                 qty={shoesQty}
@@ -211,7 +200,6 @@ export default function Additional({ booking, setBooking, setShowPayment }) {
                 isLast
               />
 
-              {/* totals */}
               <div className="mt-4 rounded-xl bg-white/15 p-4 text-sm">
                 <div className="flex items-center justify-between">
                   <span className="font-semibold">Add-ons total</span>
@@ -225,7 +213,6 @@ export default function Additional({ booking, setBooking, setShowPayment }) {
             </div>
           </div>
 
-          {/* info + checkout */}
           <div className="lg:col-span-4">
             <div className="rounded-2xl bg-white/80 p-6 shadow-lg backdrop-blur">
               <h4 className="text-lg font-bold text-black">
@@ -269,7 +256,6 @@ function AddonRow({ label, qty, onInc, onDec, sizeNode, price, isLast }) {
         " ",
       )}
     >
-      {/* qty */}
       <div className="rounded-xl border border-white/70 bg-white/10 p-3">
         <div className="text-xs font-semibold uppercase text-black/70">
           {label}
@@ -299,12 +285,10 @@ function AddonRow({ label, qty, onInc, onDec, sizeNode, price, isLast }) {
         </div>
       </div>
 
-      {/* size */}
       <div className="rounded-xl border border-white/70 bg-white/10 p-3 flex items-center">
         <div className="w-full">{sizeNode}</div>
       </div>
 
-      {/* price */}
       <div className="rounded-xl border border-white/70 bg-white/10 p-3 flex items-center justify-center text-lg font-bold">
         {price}
       </div>

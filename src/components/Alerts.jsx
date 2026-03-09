@@ -4,7 +4,7 @@ import AlertContext from "../alert/alertContext";
 const typeStyles = {
   success: "border-green-500/40 bg-green-500/10 text-green-200",
   error: "border-red-500/40 bg-red-500/10 text-red-200",
-  danger: "border-red-500/40 bg-red-500/10 text-red-200", // keep compatibility
+  danger: "border-red-500/40 bg-red-500/10 text-red-200",
   warning: "border-yellow-500/40 bg-yellow-500/10 text-yellow-100",
   info: "border-sky-500/40 bg-sky-500/10 text-sky-200",
 };

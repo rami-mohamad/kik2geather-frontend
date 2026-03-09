@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Field from "./Field";
-import { api } from "../lib/api"; // adjust path
+import { api } from "../lib/api";
 
-import Bg from "../assets/Media/Images/Booking/Booking_BG.png"; // adjust path
-import ProgressImg from "../assets/Media/Images/Booking/statusBar_ step1.png"; // adjust path
+import Bg from "../assets/Media/Images/Booking/Booking_BG.png";
+import ProgressImg from "../assets/Media/Images/Booking/statusBar_ step1.png";
 
 const MAX_PLAYERS = 10;
 
@@ -16,12 +16,10 @@ function addDays(date, days) {
 }
 
 export default function Fields({ setBooking }) {
-  // 90 days window
   const today = new Date();
   const minDate = today.toISOString().slice(0, 10);
   const maxDate = addDays(today, 90).toISOString().slice(0, 10);
 
-  // controlled form state
   const [form, setForm] = useState({
     users: 1,
     date: minDate,
@@ -35,7 +33,6 @@ export default function Fields({ setBooking }) {
   const [loading, setLoading] = useState(false);
   const [loadError, setLoadError] = useState(null);
 
-  // fetch slots when date changes
   useEffect(() => {
     let alive = true;
 
@@ -65,7 +62,6 @@ export default function Fields({ setBooking }) {
     };
   }, [form.date]);
 
-  // recompute fieldInfo when slots or selected time changes
   useEffect(() => {
     const start = Number(form.startHour);
     const end = start + Number(form.hoursQuantity);
@@ -120,7 +116,6 @@ export default function Fields({ setBooking }) {
       style={{ backgroundImage: `url(${Bg})` }}
     >
       <div className="mx-auto w-full max-w-6xl px-4 py-6">
-        {/* progress */}
         <div className="flex justify-center pt-6">
           <img
             src={ProgressImg}
@@ -129,10 +124,8 @@ export default function Fields({ setBooking }) {
           />
         </div>
 
-        {/* top controls + CTA */}
         <div className="mt-8 rounded-3xl border border-black/10 bg-white/80 p-6 shadow-lg backdrop-blur">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-end">
-            {/* users */}
             <div className="lg:col-span-2">
               <label className="text-xs font-semibold text-black/70">
                 Players
@@ -150,7 +143,6 @@ export default function Fields({ setBooking }) {
               </select>
             </div>
 
-            {/* date */}
             <div className="lg:col-span-4">
               <label className="text-xs font-semibold text-black/70">
                 Date
@@ -166,7 +158,6 @@ export default function Fields({ setBooking }) {
               />
             </div>
 
-            {/* start hour */}
             <div className="lg:col-span-2">
               <label className="text-xs font-semibold text-black/70">
                 Start
@@ -185,7 +176,6 @@ export default function Fields({ setBooking }) {
               </select>
             </div>
 
-            {/* hours */}
             <div className="lg:col-span-2">
               <label className="text-xs font-semibold text-black/70">
                 Duration
@@ -204,7 +194,6 @@ export default function Fields({ setBooking }) {
               </select>
             </div>
 
-            {/* book button */}
             <div className="lg:col-span-2 lg:flex lg:justify-end">
               <button
                 type="button"
@@ -224,7 +213,6 @@ export default function Fields({ setBooking }) {
             </div>
           </div>
 
-          {/* second row: field select + legend */}
           <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-4">
               <label className="text-xs font-semibold text-black/70">
@@ -268,7 +256,6 @@ export default function Fields({ setBooking }) {
             </div>
           </div>
 
-          {/* loading/error */}
           <div className="mt-4">
             {loading ? (
               <p className="text-sm text-black/70">Loading slots…</p>
@@ -279,7 +266,6 @@ export default function Fields({ setBooking }) {
           </div>
         </div>
 
-        {/* fields grid */}
         <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
           <div className="flex justify-center">
             <Field blocked={fieldInfo[1]} field={1} />

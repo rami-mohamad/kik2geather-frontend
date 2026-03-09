@@ -1,10 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { api } from "../lib/api"; // adjust import path
+import { api } from "../lib/api";
 import Field from "./Field";
 
-// Optional: background image (instead of SCSS)
-import Bg from "../assets/Media/Images/Booking/Booking_BG.png"; // adjust path
-import ProgressImg from "../assets/Media/Images/Booking/statusBar_ step1.png"; // adjust path
+import Bg from "../assets/Media/Images/Booking/Booking_BG.png";
+import ProgressImg from "../assets/Media/Images/Booking/statusBar_ step1.png";
 
 const MAX_PLAYERS = 10;
 
@@ -15,12 +14,10 @@ function addDays(date, days) {
 }
 
 export default function FieldsMobile({ setBooking }) {
-  // 90 days logic
   const today = new Date();
   const minDate = today.toISOString().slice(0, 10);
   const maxDate = addDays(today, 90).toISOString().slice(0, 10);
 
-  // form state (controlled)
   const [form, setForm] = useState({
     users: 1,
     date: minDate,
@@ -34,7 +31,6 @@ export default function FieldsMobile({ setBooking }) {
   const [loading, setLoading] = useState(false);
   const [loadError, setLoadError] = useState(null);
 
-  // Fetch slots when date changes
   useEffect(() => {
     let alive = true;
 
@@ -64,7 +60,6 @@ export default function FieldsMobile({ setBooking }) {
     };
   }, [form.date]);
 
-  // recompute fieldInfo whenever selection or daySlots changes
   useEffect(() => {
     const start = Number(form.startHour);
     const end = start + Number(form.hoursQuantity);
@@ -105,7 +100,6 @@ export default function FieldsMobile({ setBooking }) {
   const onBook = () => {
     if (!bookingPossible) return;
 
-    // what you pass to next step
     setBooking({
       users: Number(form.users),
       date: form.date,
@@ -121,7 +115,6 @@ export default function FieldsMobile({ setBooking }) {
       style={{ backgroundImage: `url(${Bg})` }}
     >
       <div className="mx-auto w-full max-w-3xl px-4 py-6">
-        {/* progress image */}
         <div className="flex justify-center pt-6">
           <img
             src={ProgressImg}
@@ -130,9 +123,7 @@ export default function FieldsMobile({ setBooking }) {
           />
         </div>
 
-        {/* Card */}
         <div className="mt-8 rounded-3xl border border-black/10 bg-white/80 p-4 shadow-lg backdrop-blur sm:p-6">
-          {/* Controls */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label className="text-xs font-semibold text-black/70">
@@ -228,7 +219,6 @@ export default function FieldsMobile({ setBooking }) {
             </div>
           </div>
 
-          {/* Legend */}
           <div className="mt-6 space-y-2 text-sm text-black/80">
             <div className="flex items-center gap-3">
               <span className="h-4 w-4 rounded-full border-2 border-[#858585] bg-white" />
@@ -243,7 +233,6 @@ export default function FieldsMobile({ setBooking }) {
             </div>
           </div>
 
-          {/* Loading / error */}
           <div className="mt-6">
             {loading ? (
               <p className="text-sm text-black/70">Loading slots…</p>
@@ -252,7 +241,6 @@ export default function FieldsMobile({ setBooking }) {
             ) : null}
           </div>
 
-          {/* CTA */}
           <div className="mt-6 flex justify-center">
             <button
               type="button"
@@ -272,7 +260,6 @@ export default function FieldsMobile({ setBooking }) {
           </div>
         </div>
 
-        {/* Fields */}
         <div className="mt-8 space-y-8">
           <div className="flex justify-center">
             <Field blocked={fieldInfo[1]} field={1} />

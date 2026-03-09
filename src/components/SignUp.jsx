@@ -2,8 +2,7 @@ import React, { useContext, useState } from "react";
 import AlertContext from "../alert/alertContext";
 import AuthContext from "../auth/authContext";
 
-// optional old background image
-import CardBg from "../assets/Subtract.png"; // adjust path if needed
+import CardBg from "../assets/Subtract.png";
 
 function SignUp() {
   const { register, loading } = useContext(AuthContext);
@@ -58,7 +57,6 @@ function SignUp() {
           border border-white/10 bg-white/5 shadow-xl backdrop-blur
         "
       >
-        {/* Background image layer */}
         <div
           className="absolute inset-0 opacity-25"
           style={{
@@ -68,10 +66,9 @@ function SignUp() {
             backgroundPosition: "center",
           }}
         />
-        {/* Gradient overlay */}
+
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/45" />
 
-        {/* Content */}
         <div className="relative p-6 sm:p-8">
           <div className="mb-6">
             <h2 className="text-2xl font-semibold text-white">Sign up</h2>
@@ -81,7 +78,6 @@ function SignUp() {
           </div>
 
           <form onSubmit={onSubmit} className="space-y-4">
-            {/* Name */}
             <div className="space-y-2">
               <label className="text-xs font-medium text-white/70">Name</label>
               <input
@@ -99,7 +95,6 @@ function SignUp() {
               />
             </div>
 
-            {/* Nickname */}
             <div className="space-y-2">
               <label className="text-xs font-medium text-white/70">
                 Nick name
@@ -119,7 +114,6 @@ function SignUp() {
               />
             </div>
 
-            {/* Email */}
             <div className="space-y-2">
               <label className="text-xs font-medium text-white/70">Email</label>
               <input
@@ -137,7 +131,6 @@ function SignUp() {
               />
             </div>
 
-            {/* Password */}
             <div className="space-y-2">
               <label className="text-xs font-medium text-white/70">
                 Password
@@ -157,7 +150,6 @@ function SignUp() {
               />
             </div>
 
-            {/* Terms */}
             <div className="flex items-center gap-3 pt-1">
               <input
                 type="checkbox"
@@ -172,7 +164,6 @@ function SignUp() {
               </label>
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={loading}

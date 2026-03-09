@@ -57,7 +57,6 @@ const AuthState = ({ children }) => {
     try {
       const { data } = await api.post("/user/login", formData);
 
-      // If your backend returns { token, user, success }
       if (data?.token)
         localStorage.setItem("token", JSON.stringify(data.token));
 
@@ -72,11 +71,7 @@ const AuthState = ({ children }) => {
   const loadUser = useCallback(async () => {
     dispatch({ type: AUTH_SET_LOADING });
     try {
-      console.log("start");
-
-      // Your current endpoint:
       const { data } = await api.get("/booking/dashboard");
-      console.log(data);
 
       dispatch({ type: AUTH_USER_LOADED, payload: data });
 

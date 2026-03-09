@@ -19,10 +19,8 @@ function HeroSection() {
       id="home"
       className="relative flex h-[800px] items-center justify-center overflow-hidden bg-[#0c0c0c] px-[30px]"
     >
-      {/* overlay gradients (replacement for :before) */}
       <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.6)_100%),linear-gradient(180deg,rgba(0,0,0,0.2)_0%,transparent_100%)]" />
 
-      {/* background video */}
       <div className="absolute inset-0 z-[1] h-full w-full overflow-hidden">
         <video
           className="h-full w-full object-cover bg-[#232a34]"
@@ -34,7 +32,6 @@ function HeroSection() {
         />
       </div>
 
-      {/* dots */}
       <img
         src={HeroLeftDots}
         alt="Hero Left Dots"
@@ -46,7 +43,6 @@ function HeroSection() {
         className="absolute right-0 top-[340px] z-[5] h-[373px] w-[100px]"
       />
 
-      {/* side texts (hidden below 920px like before) */}
       <p className="absolute left-[90px] top-[250px] z-[5] h-[100px] w-[200px] text-[14px] leading-[32px] text-[#fabf2f] max-[920px]:hidden">
         Use mixed grid with imagery, replace with your own photos and
         descriptions
@@ -64,9 +60,7 @@ function HeroSection() {
         site
       </p>
 
-      {/* content */}
       <div className="absolute z-[3] flex max-w-[1200px] flex-col items-center px-6 py-2">
-        {/* title */}
         <h1
           className="
             absolute top-[-320px] z-[3]
@@ -84,7 +78,6 @@ function HeroSection() {
           kick2gether
         </h1>
 
-        {/* image overlay (Rectangle.png) */}
         <img
           src={HeroImage}
           alt="Hero Background Image"
@@ -96,7 +89,6 @@ function HeroSection() {
           "
         />
 
-        {/* players */}
         <img
           src={HeroTopPlayer}
           alt="Top Hero Player"
@@ -108,23 +100,18 @@ function HeroSection() {
           className="absolute top-[270px] w-3/5 opacity-40 max-md:top-[140px]"
         />
 
-        {/* text */}
         <p className="relative top-[-150px] z-[3] max-w-[800px] text-center font-['Michroma',sans-serif] text-[24px] text-white max-md:top-[-200px] max-md:text-[16px] max-[480px]:text-[14px]">
           create your own champions leauge every day
         </p>
 
-        {/* golden icon */}
         <img
           src={HeroIcon}
           alt="Golden FB Icon"
           className="absolute top-[-50%] w-3/5 max-md:top-[-100%] max-[480px]:top-[-100%]"
         />
 
-        {/* button wrapper */}
         <div className="mt-[55px] flex flex-col items-center">
           <div className="relative top-[200px] max-md:top-[65px] max-[480px]:top-[130px]">
-            {/* Use LinkScroll for smooth scroll props if you still want them.
-                But your action is navigating to /booking, so we handle onClick */}
             <LinkScroll
               to="home"
               smooth

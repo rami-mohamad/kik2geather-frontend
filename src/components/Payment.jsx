@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom"; // if you move to react-router v6
-// If you're still on react-router-dom v5, use useHistory instead (see note below)
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Bg from "../assets/Media/Images/Payment/PaymentBg.png";
@@ -22,9 +21,6 @@ export default function Payment({ booking, setEmail }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // ✅ If you're on react-router v5, replace with:
-  // const history = useHistory();
-  // and use history.push(...)
   const navigate = useNavigate();
 
   const normalized = useMemo(() => {
@@ -68,10 +64,8 @@ export default function Payment({ booking, setEmail }) {
 
       console.log("res", res);
 
-      // backend contract is unclear, so we handle common shapes safely
       const ok = Boolean(res?.data?.status ?? res?.data?.success ?? true);
 
-      // if backend says user must register/login:
       if (res?.data?.needsAuth || res?.data?.status === "NEEDS_AUTH") {
         navigate("/registration");
         return;
@@ -81,12 +75,8 @@ export default function Payment({ booking, setEmail }) {
         throw new Error(res?.data?.message || "Booking failed");
       }
 
-      // confirmation email
       const email = res?.data?.email;
       if (email) setEmail(email);
-
-      // go to confirmation screen in your flow (you used setEmail to show confirmation)
-      // so here we just let BookingWrap show the confirmation.
     } catch (err) {
       const msg =
         err?.response?.data?.message ||
@@ -94,7 +84,6 @@ export default function Payment({ booking, setEmail }) {
         "Something went wrong. Please try again.";
       setErrorMsg(msg);
 
-      // fallback route
       navigate("/registration");
     } finally {
       setIsSubmitting(false);
@@ -137,7 +126,6 @@ export default function Payment({ booking, setEmail }) {
       style={{ backgroundImage: `url(${Bg})` }}
     >
       <div className="mx-auto w-full max-w-6xl px-4 py-8">
-        {/* progress */}
         <div className="flex justify-center">
           <img
             src={Step3Img}
@@ -146,19 +134,16 @@ export default function Payment({ booking, setEmail }) {
           />
         </div>
 
-        {/* greeting */}
         <h3 className="mt-10 text-center text-xl font-semibold tracking-wide text-black md:text-3xl">
           Dear <span className="text-fuchsia-600">User_Name</span>, please check
           your details again.
         </h3>
 
-        {/* attention */}
         <div className="mx-auto mt-6 flex max-w-3xl items-center justify-center gap-4 rounded-xl bg-red-500/10 px-4 py-3 text-center text-sm font-medium text-red-600 md:text-lg">
           <img src={AttentionImg} alt="Attention" className="h-7 w-7" />
           <div>Please complete your payment details.</div>
         </div>
 
-        {/* payment methods */}
         <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-black/10 shadow-lg">
           <div className="bg-[#eac66f] py-3 text-center text-base font-semibold md:text-lg">
             PAYMENT METHOD
@@ -192,7 +177,6 @@ export default function Payment({ booking, setEmail }) {
           </div>
         </div>
 
-        {/* payment chart */}
         <div className="mx-auto mt-10 max-w-5xl">
           <div className="border-b-4 border-black pb-2 text-2xl font-semibold text-black md:text-3xl">
             Your Payment Chart
@@ -206,7 +190,6 @@ export default function Payment({ booking, setEmail }) {
               <div className="text-right">Price</div>
             </div>
 
-            {/* booked field */}
             <RowLine
               item="Booked Field"
               details={`Field: ${normalized.field ?? "-"}`}

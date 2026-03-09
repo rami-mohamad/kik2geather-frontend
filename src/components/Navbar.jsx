@@ -30,7 +30,6 @@ function Navbar({ toggle }) {
   return (
     <nav className="sticky top-0 z-50 flex h-20 items-center justify-center bg-gradient-to-b from-black via-[#424242] to-black">
       <div className="flex h-20 w-full max-w-[1100px] items-center justify-between px-6">
-        {/* Logo */}
         <button
           type="button"
           onClick={toggleHome}
@@ -44,7 +43,6 @@ function Navbar({ toggle }) {
           />
         </button>
 
-        {/* Mobile icon */}
         <button
           type="button"
           onClick={toggle}
@@ -62,7 +60,6 @@ function Navbar({ toggle }) {
           <BsFillBarChartFill />
         </button>
 
-        {/* Desktop menu */}
         <ul className="flex items-center text-center mr-[5%] max-md:hidden">
           <li className="h-20 px-[10px]">
             <LinkScroll
@@ -109,7 +106,6 @@ function Navbar({ toggle }) {
             </LinkScroll>
           </li>
 
-          {/* Sign In | Up button */}
           {!isAuthenticated ? (
             <li className="ml-2">
               <LinkRouter

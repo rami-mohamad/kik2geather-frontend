@@ -37,14 +37,9 @@ function useIsMobile(breakpointPx = 800) {
 
 export default function Booking() {
   const isMobile = useIsMobile(800);
-
-  // step: "fields" -> "additional" -> "payment" -> "confirm"
   const [step, setStep] = useState("fields");
-
-  // keep booking object (better than boolean)
   const [booking, setBooking] = useState(null);
 
-  // email should be string or null
   const [email, setEmail] = useState(null);
 
   const content = useMemo(() => {
@@ -58,7 +53,7 @@ export default function Booking() {
           booking={booking}
           setBooking={(b) => {
             setBooking(b);
-            setStep("additional"); // move forward when booking selected
+            setStep("additional");
           }}
         />
       ) : (

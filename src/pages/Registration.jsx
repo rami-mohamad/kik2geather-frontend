@@ -3,8 +3,6 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import Alerts from "../components/Alerts";
 import NavbarHistory from "../components/NavbarHistory";
-
-// images (adjust paths!)
 import HeaderImg from "../assets/Header-1.png";
 import LeftBg from "../assets/Section 1.png";
 import RightBg from "../assets/rightside.png";
@@ -84,10 +82,8 @@ export default function Registration() {
       <NavbarHistory />
 
       <main className="relative min-h-[calc(100vh-50px)] overflow-hidden bg-[#0c0c0c]">
-        {/* background gradient */}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,#000_0%,rgba(255,255,255,0)_100%),linear-gradient(180deg,rgba(255,255,255,0.5)_0%,rgba(255,255,255,0)_100%),#535353]" />
 
-        {/* left / right background images (desktop) */}
         <div className="absolute inset-y-0 left-0 hidden w-1/2 lg:block">
           <div
             className="h-full w-full bg-right bg-no-repeat"
@@ -108,7 +104,6 @@ export default function Registration() {
           />
         </div>
 
-        {/* header + center logo (desktop) */}
         <div className="pointer-events-none absolute left-1/2 top-10 z-10 hidden -translate-x-1/2 lg:block">
           <img
             src={HeaderImg}
@@ -128,9 +123,7 @@ export default function Registration() {
         <Alerts />
 
         <div className="relative z-20 mx-auto w-full max-w-[1400px] px-4 py-10 lg:py-14">
-          {/* ✅ DESKTOP: no absolute bottom boxes - 2 rows per side */}
           <div className="hidden lg:grid lg:grid-cols-2 lg:gap-0">
-            {/* LEFT SIDE (SignUp + Contact) */}
             <div className="grid min-h-[820px] grid-rows-[1fr_auto]">
               <div className="pt-[140px]">
                 <div className="ml-[13%] w-[420px] max-w-[calc(100%-13%-16px)]">
@@ -145,7 +138,6 @@ export default function Registration() {
               </div>
             </div>
 
-            {/* RIGHT SIDE (SignIn + Social) */}
             <div className="grid min-h-[820px] grid-rows-[1fr_auto]">
               <div className="pt-[140px]">
                 <div className="ml-auto mr-[13%] w-[420px] max-w-[calc(100%-13%-16px)]">
@@ -161,7 +153,6 @@ export default function Registration() {
             </div>
           </div>
 
-          {/* MOBILE/TABLET: stacked */}
           <div className="grid grid-cols-1 gap-8 lg:hidden">
             <SignUp />
             <SignIn />
